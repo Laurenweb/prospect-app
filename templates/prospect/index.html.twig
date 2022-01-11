@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/prospect/index.css') }}"/>
+{% endblock %}
+
+{% block title %}Liste prospects{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Liste des prospects</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Collaborateur</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Projet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prospect in prospects %}
+            <tr>
+                <td>{{ prospect.id }}</td>
+                <td>{{ prospect.reporter.email }}</td>
+                <td>{{ prospect.firstname }}</td>
+                <td>{{ prospect.lastname }}</td>
+                <td>{{ prospect.phone }}</td>
+                <td>{{ prospect.email }}</td>
+                <td>{{ prospect.project | raw}}</td>
+                <td class="icone">
+                    <a data-toggle="tooltip" data-placement="top" title="Voir détails" href="{{ path('prospect_show', {'id': prospect.id}) }}"><i class="fas fa-info-circle fa-lg"></i></a>
+                    <a data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('prospect_edit', {'id': prospect.id}) }}"><i class="fas fa-edit fa-lg"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('prospect_new') }}" class="btn btn-info"><i class="fas fa-plus"></i>  Créer un nouveau prospect</a>
+
+    <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+    </script>
+{% endblock %}

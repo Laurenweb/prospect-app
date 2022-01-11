@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/home/index.css') }}"/>
+{% endblock %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+	<body class="text-center">
+
+		<div class="container">
+	
+			{# <div class="home">
+				<div class="row h-50">
+					<div class="col-md-6 ml-1 h3">Bienvenue!
+					</div>
+				</div>
+			</div> #}
+
+            <main role="main" class="cover">
+                <h1 class="cover-heading display-1">Prospect <br>App</h1>
+        
+            </main>
+
+		</div>
+
+        <footer class="homeFooter mt-auto">
+
+			<div class="col-md-12 mr-auto">
+				<p><i class="far fa-copyright"></i>2021-2022 Prospect Management App</p>
+			</div>
+		
+  		</footer>
+
+	</body>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+	<a class="navbar-brand text-white" href="{{ path('home') }}">
+		<img src="{{ asset('img/customer-close.png') }}" width="40" eight="40" class="d-inline-block-align-top" alt="logo xonatis">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto nav-left">
+			<li class="nav-item active">
+				<a class="nav-link" href="{{ path('home') }}">Accueil
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('ambassador_index') }}">Collaborateur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('prospect_index') }}">Prospect</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('action_index') }}">Action</a>
+			</li>
+		</ul>
+
+		<ul class="nav navbar-nav ml-auto">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="mots-clés" aria-label="Search">
+					<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Recherche</button>
+				</form>
+
+			{% if app.user %}
+				<ul class="navbar-nav ml-4">
+					<li class="nav-item dropdown" style="margin-right: 75px;">
+						<a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user-circle fa-lg"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item"><strong>{{ app.user.username }}</strong></a>
+							<a class="dropdown-item" href="{{ path('profile_edit') }}">Compte</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+						</div>
+					</li>
+				</ul>
+
+			{% else %}
+
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">S'identifier</a>
+					</li>
+					<li id="registerNav" class="nav-item">
+						<a class="nav-link" href="{{ path('app_register') }}">Créer un compte</a>
+					</li>
+				</ul>
+
+			{% endif %}
+		</ul>
+	</div>
+</nav>

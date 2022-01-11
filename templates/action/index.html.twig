@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/action/index.css') }}"/>
+{% endblock %}
+
+{% block title %}Liste des actions{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Liste des actions</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date de création</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for action in actions %}
+            <tr>
+                <td>{{ action.id }}</td>
+                <td>{{ action.createdAt ? action.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ action.description | raw }}</td>
+                <td class="icone_action">
+                    <a data-toggle="tooltip" data-placement="top" title="Voir détails" href="{{ path('action_show', {'id': action.id}) }}"><i class="fas fa-info-circle fa-lg"></i></a>
+                    <a data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('action_edit', {'id': action.id}) }}"><i class="fas fa-edit fa-lg"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('action_new') }}" class="btn btn-info"><i class="fas fa-plus"></i>  Créer une nouvelle action</a>
+
+    <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+    </script>
+{% endblock %}

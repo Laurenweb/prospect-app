@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil collaborateur{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Profil collaborateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Mot de passe</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Compte vérifié</th>
+                <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-info mb-3" href="{{ path('ambassador_edit', {'id': user.id}) }}">Modifier</a>
+
+    {{ include('ambassador/_delete_form.html.twig') }}
+    <br />
+    <a href="{{ path('ambassador_index') }}">Retour à la liste</a>
+{% endblock %}

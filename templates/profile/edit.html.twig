@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5">Modifier ou réinitialiser votre mot de passe</h1>
+
+    {{ include('profile/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('home') }}">Retour à l'accueil</a>
+
+{% endblock %}

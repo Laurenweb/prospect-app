@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Création d'un nouvel ambassador</h1>
+
+    {{ include('ambassador/_form.html.twig') }}
+
+    <a href="{{ path('ambassador_index') }}">Retour à la liste</a>
+{% endblock %}

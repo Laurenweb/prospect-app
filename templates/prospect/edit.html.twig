@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de prospect{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Modifier un prospect</h1>
+
+    {{ include('prospect/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('prospect/_delete_form.html.twig') }}
+    <br />
+    <a href="{{ path('prospect_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ambassador/index.css') }}"/>
+{% endblock %}
+
+{% block title %}Collaborateur{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Liste des collaborateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Compte vérifié</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+                <td class="icone">
+                    <a data-toggle="tooltip" data-placement="top" title="Voir détails" href="{{ path('ambassador_show', {'id': user.id}) }}"><i class="fas fa-info-circle fa-lg"></i></a>
+                    <a data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('ambassador_edit', {'id': user.id}) }}"><i class="fas fa-edit fa-lg"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('ambassador_new') }}" class="btn btn-info"><i class="fas fa-plus"></i>  Créer un nouveau collaborateur</a>
+
+    <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+    </script>
+
+{% endblock %}

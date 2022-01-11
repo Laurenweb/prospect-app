@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau prospect{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Créer un nouveau prospect</h1>
+
+    {{ include('prospect/_form.html.twig') }}
+
+    <a href="{{ path('prospect_index') }}">Retour à la liste</a>
+    
+{% endblock %}

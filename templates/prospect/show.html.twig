@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prospect{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 my-5">Prospect</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ prospect.id }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ prospect.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ prospect.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ prospect.phone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ prospect.email }}</td>
+            </tr>
+            <tr>
+                <th>Projet</th>
+                <td>{{ prospect.project | raw}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <a class="btn btn-info mb-3" href="{{ path('prospect_edit', {'id': prospect.id}) }}">Modifier</a>
+
+    {{ include('prospect/_delete_form.html.twig') }}
+    <br />
+    <a href="{{ path('prospect_index') }}">Retour à la liste</a>
+{% endblock %}
